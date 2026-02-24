@@ -8,8 +8,7 @@ import pytest
 @pytest.fixture
 def generic_naming_code():
     """Python code with lots of generic AI-style names."""
-    return textwrap.dedent(
-        """
+    return textwrap.dedent("""
         def process_data(data, result, temp):
             output = data
             response = result
@@ -23,15 +22,13 @@ def generic_naming_code():
         def handle_request(data):
             result = data
             return result
-    """
-    )
+    """)
 
 
 @pytest.fixture
 def over_commented_code():
     """Python code with excessive obvious comments."""
-    return textwrap.dedent(
-        """
+    return textwrap.dedent("""
         # increment counter
         counter += 1
         # return the result
@@ -48,15 +45,13 @@ def over_commented_code():
         with open('file.txt') as f:
             # read the file
             content = f.read()
-    """
-    )
+    """)
 
 
 @pytest.fixture
 def placeholder_code():
     """Python code with TODOs and empty bodies."""
-    return textwrap.dedent(
-        """
+    return textwrap.dedent("""
         def process():
             # TODO: implement this
             pass
@@ -72,15 +67,13 @@ def placeholder_code():
         x = 1
         # TODO: remove this later
         y = 2
-    """
-    )
+    """)
 
 
 @pytest.fixture
 def security_issues_code():
     """Python code with multiple security anti-patterns."""
-    return textwrap.dedent(
-        """
+    return textwrap.dedent("""
         import subprocess
 
         password = "super_secret_password123"
@@ -92,15 +85,13 @@ def security_issues_code():
 
         def query_db(name):
             cursor.execute("SELECT * FROM users WHERE name = " + name)
-    """
-    )
+    """)
 
 
 @pytest.fixture
 def repetitive_code():
     """Python code with copy-paste functions."""
-    return textwrap.dedent(
-        """
+    return textwrap.dedent("""
         def process_user(user):
             result = []
             for item in user:
@@ -118,15 +109,13 @@ def repetitive_code():
             for item in product:
                 result.append(item)
             return result
-    """
-    )
+    """)
 
 
 @pytest.fixture
 def clean_code():
     """Python code with good naming and no AI smell."""
-    return textwrap.dedent(
-        """
+    return textwrap.dedent("""
         \"\"\"Module for processing customer orders.\"\"\"
 
         from decimal import Decimal
@@ -157,15 +146,13 @@ def clean_code():
                     item.get("product_id") and item.get("quantity", 0) > 0
                     for item in order["line_items"]
                 )
-    """
-    )
+    """)
 
 
 @pytest.fixture
 def high_ratio_code():
     """Python code with more docstrings than actual logic."""
-    return textwrap.dedent(
-        """
+    return textwrap.dedent("""
         \"\"\"
         This module provides a comprehensive set of utility functions
         for processing and handling various types of data inputs and outputs.
@@ -190,5 +177,4 @@ def high_ratio_code():
             Returns the data retrieved from the source as a result.
             \"\"\"
             return source
-    """
-    )
+    """)

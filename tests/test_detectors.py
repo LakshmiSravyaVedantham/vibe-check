@@ -19,15 +19,13 @@ class TestNamingDetector:
         assert any("generic variable" in f.lower() or "generic" in f.lower() for f in result.findings)
 
     def test_detects_generic_function_names(self):
-        code = textwrap.dedent(
-            """
+        code = textwrap.dedent("""
             def process_data(x):
                 return x
 
             def handle_request(req):
                 return req
-        """
-        )
+        """)
         result = detect_naming("test.py", code)
         assert result.score > 0.0
         assert any("process_data" in f or "handle_request" in f for f in result.findings)
@@ -105,29 +103,25 @@ class TestPlaceholderDetector:
         assert any("TODO" in f for f in result.findings)
 
     def test_detects_empty_function_bodies(self):
-        code = textwrap.dedent(
-            """
+        code = textwrap.dedent("""
             def foo():
                 pass
 
             def bar():
                 pass
-        """
-        )
+        """)
         result = detect_placeholders("test.py", code)
         assert result.score > 0.0
         assert any("pass" in f.lower() or "empty" in f.lower() for f in result.findings)
 
     def test_detects_raise_not_implemented(self):
-        code = textwrap.dedent(
-            """
+        code = textwrap.dedent("""
             def abstract_method(self):
                 raise NotImplementedError("subclass must implement")
 
             def another_stub(self):
                 raise NotImplementedError
-        """
-        )
+        """)
         result = detect_placeholders("test.py", code)
         assert result.score > 0.0
         assert any("NotImplementedError" in f or "stub" in f.lower() for f in result.findings)
@@ -187,12 +181,10 @@ class TestRepetitiveDetector:
         assert result.score < 0.5
 
     def test_returns_zero_for_single_function(self):
-        code = textwrap.dedent(
-            """
+        code = textwrap.dedent("""
             def my_function(x):
                 return x * 2
-        """
-        )
+        """)
         result = detect_repetitive("test.py", code)
         assert result.score == 0.0
 

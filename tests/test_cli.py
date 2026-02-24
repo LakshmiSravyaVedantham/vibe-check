@@ -18,8 +18,7 @@ def runner():
 @pytest.fixture
 def sample_repo(tmp_path):
     """Create a temporary repo with a mix of file quality."""
-    clean = textwrap.dedent(
-        """
+    clean = textwrap.dedent("""
         \"\"\"Clean module.\"\"\"
         from decimal import Decimal
 
@@ -27,11 +26,9 @@ def sample_repo(tmp_path):
         def calculate_tax(amount: Decimal, rate: Decimal) -> Decimal:
             \"\"\"Return the tax amount for the given amount and rate.\"\"\"
             return amount * rate
-    """
-    )
+    """)
 
-    vibed = textwrap.dedent(
-        """
+    vibed = textwrap.dedent("""
         password = "hardcoded_password_123"
         api_key = "sk-thisisaverylongfakekey123"
 
@@ -44,8 +41,7 @@ def sample_repo(tmp_path):
         def handle_request(data):
             # TODO: fix this
             pass
-    """
-    )
+    """)
 
     (tmp_path / "clean.py").write_text(clean)
     (tmp_path / "vibed.py").write_text(vibed)
