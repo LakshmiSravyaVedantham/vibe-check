@@ -254,7 +254,8 @@ def generate_html_report(
                     f"</div>"
                 )
 
-        rows.append(f"""
+        rows.append(
+            f"""
             <tr>
                 <td class="file-path">{result.relative_path}</td>
                 <td>
@@ -273,7 +274,8 @@ def generate_html_report(
                         <div class="detector-breakdown">{detector_bars}</div>
                     </details>
                 </td>
-            </tr>""")
+            </tr>"""
+        )
 
     rows_html = "\n".join(rows)
 

@@ -37,13 +37,15 @@ class TestAnalyzeFile:
         assert result.error is not None
 
     def test_analyze_javascript_file(self, tmp_path):
-        code = textwrap.dedent("""
+        code = textwrap.dedent(
+            """
             function processData(data) {
                 // TODO: implement
                 var result = data;
                 return result;
             }
-        """)
+        """
+        )
         filepath = tmp_path / "test.js"
         filepath.write_text(code)
         result = analyze_file(str(filepath))
